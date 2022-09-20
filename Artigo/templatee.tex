@@ -1,0 +1,193 @@
+%=================================================================
+
+\documentclass[article,submit,moreauthors,pdftex]{Definitions/mdpi}
+%=================================================================
+% MDPI internal commands
+\firstpage{1} 
+\makeatletter 
+\setcounter{page}{\@firstpage} 
+\makeatother
+\pubvolume{1}
+\issuenum{1}
+\articlenumber{0}
+\pubyear{2022}
+\copyrightyear{2022}
+\datereceived{} 
+\dateaccepted{} 
+\datepublished{} 
+\hreflink{https://doi.org/} % If needed use \linebreak
+%\doinum{}
+%------------------------------------------------------------------
+% The following line should be uncommented if the LaTeX file is uploaded to arXiv.org
+%\pdfoutput=1
+
+%=================================================================
+% Add packages and commands here. The following packages are loaded in our class file: fontenc, inputenc, calc, indentfirst, fancyhdr, graphicx, epstopdf, lastpage, ifthen, lineno, float, amsmath, setspace, enumitem, mathpazo, booktabs, titlesec, etoolbox, tabto, xcolor, soul, multirow, microtype, tikz, totcount, changepage, attrib, upgreek, cleveref, amsthm, hyphenat, natbib, hyperref, footmisc, url, geometry, newfloat, caption
+
+%=================================================================
+%% Please use the following mathematics environments: Theorem, Lemma, Corollary, Proposition, Characterization, Property, Problem, Example, ExamplesandDefinitions, Hypothesis, Remark, Definition, Notation, Assumption
+%% For proofs, please use the proof environment (the amsthm package is loaded by the MDPI class).
+
+%=================================================================
+% Full title of the paper (Capitalized)
+\Title{Keylogger}
+
+\TitleCitation{Criação de um keylogger}
+
+
+% Authors, for the paper (add full first names)
+\Author{Gabriel $^{1}$, Henrique $^{2}$, Pedro $^{3}$, Vinicius $^{1}$ }
+
+%\longauthorlist{yes}
+
+% MDPI internal command: Authors, for metadata in PDF
+\AuthorNames{Gabriel Bernardes de Moura, Henrique Bezerra Lucas, Pedro Gabriel Bueno Faria, Vinicius Francisco Pinha }
+
+% MDPI internal command: Authors, for citation in the left column
+\AuthorCitation{Moura, Gabriel.; Lucas, Henrique.; Faria, Pedro.; Pinha, Vinicius.}
+% If this is a Chicago style journal: Lastname, Firstname, Firstname Lastname, and Firstname Lastname.
+
+% Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
+\address{%
+$^{1}$ \quad Tecnologia em Análise e Desenvolvimento de Sistemas; (Moura) gabrielbemoura@gmail.com, (Faria) pedrobuenofaria16@gmail.com\\
+$^{2}$ \quad Engenharia de Computação; (Pinha) viniciuspinha@hotmail.com\\
+$^{3}$ \quad Engenharia de Software; (Lucas) henriquelucas@alunos.utfpr.edu.br}
+
+
+
+
+% Abstract (Do not insert blank lines, i.e. \\) 
+\abstract{
+	Atualmente, a maioria da população mundial utiliza dos computadores para realizar as mais diversas tarefas, como: pesquisas, compras on-line, envio de mensagens, acesso a aplicações e sites. Todos esses modos de utilização dos computadores compartilham a entrada de dados, normalmente feita via teclado, como aspecto comum. A digitação de senhas, número de cartões, informações de documentos são realizadas de modo tão cotidiano que a perspectiva de perigo quase não é sentida. Essa falta de sensibilidade abre margem para que invasores façam uso dos malwares para espionar e roubar informações digitadas que o usuário acredita serem privadas. }
+
+% Keywords
+\keyword{keylogger; segurança; privacidade; invasão; } 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introdução}
+A utilização de um sistema anônimo para gravar as informações digitadas pelos usuários de modo silencioso representa um grave risco de segurança que aumenta conforme o tempo de exposição. Uma análise dos dados coletados por esse malware pode, na melhor das perspectivas, expor informações que facilitem a aplicação de futuros golpes.
+
+Para avaliar esse cenário será criada utilizando a linguagem Java uma interface de interação com um keylogger que infecte a máquina do usuário e gere um arquivo com as informações digitadas. Além da coleta da entrada de dados, a organização dos textos coletados, ou seja, a categorização daquilo que foi coletado de modo a classificar as informações conforme a viabilidade delas é outro ponto essencial que será abordado.
+
+O desenvolvimento deve ser feito de modo iterativo e incremental, para isso será utilizado o Processo Unificado como modelo de ciclo de vida. O ciclo de vida do processo é dividido em 4 fases: Concepção, Elaboração, Construção e Transição, em cada uma dessas fases são desenvolvidos 5 fluxos de trabalho em diferentes graus, sendo eles: Requisitos, Análise, Projeto, Implementação e Teste. Os fluxos de trabalho ocorrem de modo interativo dentro de cada fase, permitindo a análise do que foi produzido e o aperfeiçoamento do projeto de modo contínuo. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%=================================================================
+
+
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\section{Materiais e Métodos}
+	
+	Esta seção tem o objetivo de apresentar formalmente o trabalho, seja por meio de linguagem matemática ou de desenhos, fluxogramas, esquemas gráficos, etc. Na segunda parte da seção devem ser discutidos e apresentados quais são as ferramentas utilizadas para solucionar o problema e como elas se relacionam (quando houver mais de uma).
+	
+	Nesta seção é uma boa tática utilizar-se de figuras para apresentar a proposta de solução do problema.
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\section{Resultados}
+	
+	Esta seção deve apresentar os resultados, logo \textbf{ela só será necessária na versão final do texto}.
+	
+	\subsection{Figuras e Tabelas}
+	
+	Todas as figuras e tabelas devem ser citadas no texto principal seguindo o formato: Figura~\ref{fig1}, Tabela~\ref{tab1}, Tabela~\ref{tab2}, etc.
+	
+	\begin{figure}[H]
+		\includegraphics[width=10.5 cm]{Definitions/utfpr-logo.eps}
+		\caption{Esta é a legenda de uma figura. É importante que a legenda complemente e até mesmo repita informações contidas na figura para que fique claro a ideia e o objetivo de apresentá-la. Utilize o $\backslash$label\{alias\} para dar nome a figura e referenciá-la posteriormente utilizando $\backslash$ref\{alias\}.\label{fig1}}
+	\end{figure}   
+	\unskip
+	
+	\begin{table}[H] 
+		\caption{Esta é a legenda de uma tabela. Ela deve ficar acima da tabela ao contrário das figuras que as legendas ficam após.\label{tab1}}
+		\newcolumntype{C}{>{\centering\arraybackslash}X}
+		\begin{tabularx}{\textwidth}{CCC}
+			\toprule
+			\textbf{Title 1}	& \textbf{Title 2}	& \textbf{Title 3}\\
+			\midrule
+			Entry 1		& Data			& Data\\
+			Entry 2		& Data			& Data\\
+			\bottomrule
+		\end{tabularx}
+	\end{table}
+	\unskip
+	
+	\begin{table}[H]
+		\caption{Esta é uma tabela mais longa quando há muitas informações a serem colocadas na tabela. Use com parcimônia.\label{tab2}}
+		\begin{adjustwidth}{-\extralength}{0cm}
+			\newcolumntype{C}{>{\centering\arraybackslash}X}
+			\begin{tabularx}{\fulllength}{CCCC}
+				\toprule
+				\textbf{Title 1}	& \textbf{Title 2}	& \textbf{Title 3}     & \textbf{Title 4}\\
+				\midrule
+				Entry 1		& Data			& Data			& Data\\
+				Entry 2		& Data			& Data			& Data\textsuperscript{1}\\
+				\bottomrule
+			\end{tabularx}
+		\end{adjustwidth}
+		\noindent{\footnotesize{\textsuperscript{1} This is a table footnote.}}
+	\end{table}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\section{Conclusões}
+	
+	Aqui vocês irão apresentar as conclusões as quais chegaram após a finalização do trabalho. Na proposta, esta seção deve apresentar as considerações finais e seu nome deve ser alterado para \textbf{Considerações Finais}.
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\vspace{6pt} 
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{adjustwidth}{-\extralength}{0cm}
+		%\printendnotes[custom] % Un-comment to print a list of endnotes
+		
+		\reftitle{References}
+		
+		% Please provide either the correct journal abbreviation (e.g. according to the “List of Title Word Abbreviations” http://www.issn.org/services/online-services/access-to-the-ltwa/) or the full name of the journal.
+		% Citations and References in Supplementary files are permitted provided that they also appear in the reference list here. 
+		
+		%=====================================
+		% References, variant A: external bibliography
+		%=====================================
+		%\bibliography{your_external_BibTeX_file}
+		
+		%=====================================
+		% References, variant B: internal bibliography
+		%=====================================
+		\begin{thebibliography}{999}
+			% Reference 1
+			\bibitem[Author1(year)]{ref-journal}
+			Author~1, T. The title of the cited article. {\em Journal Abbreviation} {\bf 2008}, {\em 10}, 142--149.
+			% Reference 2
+			\bibitem[Author2(year)]{ref-book1}
+			Author~2, L. The title of the cited contribution. In {\em The Book Title}; Editor1, F., Editor2, A., Eds.; Publishing House: City, Country, 2007; pp. 32--58.
+			% Reference 3
+			\bibitem[Author3(year)]{ref-book2}
+			Author 1, A.; Author 2, B. \textit{Book Title}, 3rd ed.; Publisher: Publisher Location, Country, 2008; pp. 154--196.
+			% Reference 4
+			\bibitem[Author4(year)]{ref-unpublish}
+			Author 1, A.B.; Author 2, C. Title of Unpublished Work. \textit{Abbreviated Journal Name} year, \textit{phrase indicating stage of publication (submitted; accepted; in press)}.
+			% Reference 5
+			\bibitem[Author5(year)]{ref-communication}
+			Author 1, A.B. (University, City, State, Country); Author 2, C. (Institute, City, State, Country). Personal communication, 2012.
+			% Reference 6
+			\bibitem[Author6(year)]{ref-proceeding}
+			Author 1, A.B.; Author 2, C.D.; Author 3, E.F. Title of presentation. In Proceedings of the Name of the Conference, Location of Conference, Country, Date of Conference (Day Month Year); Abstract Number (optional), Pagination (optional).
+			% Reference 7
+			\bibitem[Author7(year)]{ref-thesis}
+			Author 1, A.B. Title of Thesis. Level of Thesis, Degree-Granting University, Location of University, Date of Completion.
+			% Reference 8
+			\bibitem[Author8(year)]{ref-url}
+			Title of Site. Available online: URL (accessed on Day Month Year).
+		\end{thebibliography}
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\end{adjustwidth}
+
+
+\end{document}
+
