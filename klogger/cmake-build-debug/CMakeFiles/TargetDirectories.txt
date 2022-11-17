@@ -1,0 +1,3 @@
+C:/Users/gabri/workspace/keylogger-utfpr-2022/klogger/cmake-build-debug/CMakeFiles/klogger.dir
+C:/Users/gabri/workspace/keylogger-utfpr-2022/klogger/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/gabri/workspace/keylogger-utfpr-2022/klogger/cmake-build-debug/CMakeFiles/rebuild_cache.dir
