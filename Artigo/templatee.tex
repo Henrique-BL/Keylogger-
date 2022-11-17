@@ -1,6 +1,5 @@
 %=================================================================
-
-\documentclass[article,submit,moreauthors,pdftex]{Definitions/mdpi}
+\documentclass[applsci,article,submit,pdftex,moreauthors]{Definitions/mdpi} 
 %=================================================================
 % MDPI internal commands
 \firstpage{1} 
@@ -36,7 +35,7 @@
 
 
 % Authors, for the paper (add full first names)
-\Author{Gabriel $^{1}$, Henrique $^{2}$, Pedro $^{3}$, Vinicius $^{1}$ }
+\Author{Gabriel Bernardes de Moura $^{1}$, Henrique Bezerra Lucas $^{2}$, Pedro Gabriel Bueno Faria $^{3}$, Vinicius Francisco Pinha $^{1}$ }
 
 %\longauthorlist{yes}
 
@@ -57,8 +56,7 @@ $^{3}$ \quad Engenharia de Software; (Lucas) henriquelucas@alunos.utfpr.edu.br}
 
 
 % Abstract (Do not insert blank lines, i.e. \\) 
-\abstract{
-	Atualmente, a maioria da população mundial utiliza dos computadores para realizar as mais diversas tarefas, como: pesquisas, compras on-line, envio de mensagens, acesso a aplicações e sites. Todos esses modos de utilização dos computadores compartilham a entrada de dados, normalmente feita via teclado, como aspecto comum. A digitação de senhas, número de cartões, informações de documentos são realizadas de modo tão cotidiano que a perspectiva de perigo quase não é sentida. Essa falta de sensibilidade abre margem para que invasores façam uso dos malwares para espionar e roubar informações digitadas que o usuário acredita serem privadas. }
+\abstract{ Nesse artigo, são apresentado os principais conceitos envolvendo keylogger, um tipo de malware que infecta à máquina dos usuários, armazena as informações acessadas pelo usuário, podendo até mesmo vazar elas pela rede. Para observar de forma prática foi construído um keylogger de forma intencional e realizado um experimento simulando uma infecção de uma máquina para analisar as possíveis aplicações e  falhas de segurança do sistema.  }
 
 % Keywords
 \keyword{keylogger; segurança; privacidade; invasão; } 
@@ -68,126 +66,123 @@ $^{3}$ \quad Engenharia de Software; (Lucas) henriquelucas@alunos.utfpr.edu.br}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introdução}
-A utilização de um sistema anônimo para gravar as informações digitadas pelos usuários de modo silencioso representa um grave risco de segurança que aumenta conforme o tempo de exposição. Uma análise dos dados coletados por esse malware pode, na melhor das perspectivas, expor informações que facilitem a aplicação de futuros golpes.
+Atualmente, com a utilização de computadores e celulares para armazenar e compartilhar informações surgem novas ameaças para integridade e segurança dos usuários que fazem uso desses meios, existem diversos modos para invadir a privacidade dos usuários, um dos métodos mais antigos e aprimorados é o
+Keylogger. Essa técnica se baseia, principalmente, no conceito de escutar e copiar as informações recebidas em uma máquina por exemplo, por meio de um teclado. Ao escutar a teclas que são pressionadas no teclado, esse malware consegue replicar o contéudo, salvá-los em um arquivo escondido  dentro da própria máquina
+ou enviá-los para outros usuários utilizando a rede, tudo de forma silenciosa, esse roubo de informações corrobora para o acontecimento de crimes ainda mais graves, além de expor publicamente os usuários de um meio considerado privado.
 
-Para avaliar esse cenário será criada utilizando a linguagem Java uma interface de interação com um keylogger que infecte a máquina do usuário e gere um arquivo com as informações digitadas. Além da coleta da entrada de dados, a organização dos textos coletados, ou seja, a categorização daquilo que foi coletado de modo a classificar as informações conforme a viabilidade delas é outro ponto essencial que será abordado.
+Para além dos modos mal intencionados de uso, um keylogger pode ser utilizado de forma saudável, por exemplo para supervisão e controle da produtividade de uma empresa por meio da verificação dos dados que cada empregado digita no computador no momento de trabalho. Outro ponto eficaz é no controle parental, pais podem instalar softwares para supervisão do contéudo que seus filhos visitam na internet. Além disso, caso os usuários principais estejam inserindo dados sensíveis a perda, esse método também pode servir para garantir uma cópia em tempo real daquilo que está sendo digitado no computador. Todas essas aplicações do keylogger são feitas de modo privado e sem apresentar riscos  para sociedade em geral. 
 
-O desenvolvimento deve ser feito de modo iterativo e incremental, para isso será utilizado o Processo Unificado como modelo de ciclo de vida. O ciclo de vida do processo é dividido em 4 fases: Concepção, Elaboração, Construção e Transição, em cada uma dessas fases são desenvolvidos 5 fluxos de trabalho em diferentes graus, sendo eles: Requisitos, Análise, Projeto, Implementação e Teste. Os fluxos de trabalho ocorrem de modo interativo dentro de cada fase, permitindo a análise do que foi produzido e o aperfeiçoamento do projeto de modo contínuo. 
+Um dos primerios registros do uso de keylogger para captura e envio de dados de forma ilícita ocorreu durante o período da Guerra Fria, onde espiões da antiga União Soviética implataram em uma série de máquinas datilográficas dos Estados Unidos pequenos circuitos eletromecânicos que detectavam e enviam em tempo real para os soviéticos todas as informações digitadas pelos estadunidenses, o dano causado pelo vazamento se tornou imensurável, tendo em vista que essa espionagem ocorreu sem levantar suspeitas  durante 8 anos. Em um contexto atual, as formas de aplicação desse método se sofisticaram e se tornaram ainda mais abragentes podendo afetar qualquer usuário que possua um computador no mundo. 
+De acordo com uma pesquisa divulgada pelo Internet World Stats mais de 5 bilhões de pessoas acessam a internet no mundo, o que implica em uma incrível gama de troca de informações diariamente. Acesso a contas bancárias, compras on-line e números de documentos são algumas das diversas formas de interação com o computador que envolvem a digitação de dados,  dessa forma, o envio e salvamento de informações nos computadores deve ocorrer de modo confidencial para garantir a privacidade dos usuários e a segurança dos dados. Nesse quesito, a utilização de um sistema anônimo para gravar as informações digitadas pelos usuários de modo silencioso representa um grave risco de segurança que aumenta conforme o tempo de exposição, uma análise dos dados coletados por esse malware pode, na melhor das perspectivas, expor informações que facilitem a aplicação de futuros golpes.
+
+Além das informações digitadas, esse malware pode incorporar novas ferramentas que aumentam a abrangência dos tipos de dados capturados, o acesso a webcam do usuário para retirar fotos em um determinado intervalo de tempo, realizar um screenshot da tela do computador no momento que um click no mouse é disparado e salvar as querys de pesquisas de outras aplicações são outras modelos de captura que podem ser salvos. 
+ 
+Para verificar o funcionamento e explorar as possíveis falhas de segurança, foi realizado um experimento apresentado nas seções a seguir com a construção de um keylogger para captura das informações digitadas pela máquina na qual ele será instalado e organização dessas informações em um arquivo de texto. Nas próximas seções serão apresentados os resultados obtidos, a metodologia usada para o desenvolvimento do malware e as fontes de informação utilizadas. 
+
+As citações devem ser feitas no texto utilizando \cite{lamport94} is a set of macros built atop \TeX{} \cite{texbook}. e a bibliografia deve ser incorporada no final deste documento.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %=================================================================
 
 
+\section{Materiais e Métodos}
 
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\section{Materiais e Métodos}
-	
-	Esta seção tem o objetivo de apresentar formalmente o trabalho, seja por meio de linguagem matemática ou de desenhos, fluxogramas, esquemas gráficos, etc. Na segunda parte da seção devem ser discutidos e apresentados quais são as ferramentas utilizadas para solucionar o problema e como elas se relacionam (quando houver mais de uma).
-	
-	Nesta seção é uma boa tática utilizar-se de figuras para apresentar a proposta de solução do problema.
-	
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\section{Resultados}
-	
-	Esta seção deve apresentar os resultados, logo \textbf{ela só será necessária na versão final do texto}.
-	
-	\subsection{Figuras e Tabelas}
-	
-	Todas as figuras e tabelas devem ser citadas no texto principal seguindo o formato: Figura~\ref{fig1}, Tabela~\ref{tab1}, Tabela~\ref{tab2}, etc.
-	
-	\begin{figure}[H]
-		\includegraphics[width=10.5 cm]{Definitions/utfpr-logo.eps}
-		\caption{Esta é a legenda de uma figura. É importante que a legenda complemente e até mesmo repita informações contidas na figura para que fique claro a ideia e o objetivo de apresentá-la. Utilize o $\backslash$label\{alias\} para dar nome a figura e referenciá-la posteriormente utilizando $\backslash$ref\{alias\}.\label{fig1}}
-	\end{figure}   
-	\unskip
-	
-	\begin{table}[H] 
-		\caption{Esta é a legenda de uma tabela. Ela deve ficar acima da tabela ao contrário das figuras que as legendas ficam após.\label{tab1}}
+Para avaliar esse cenário será criada utilizando a linguagem Java uma interface de interação com um keylogger que infecte a máquina do usuário e gere um arquivo com as informações digitadas. Além da coleta da entrada de dados, a organização dos textos coletados, ou seja, a categorização daquilo que foi coletado de modo a classificar as informações conforme a viabilidade delas é outro ponto essencial que será abordado juntamente com o envio das informações coletadas para outro usuário ou máquina utilizando a internet.
+
+O desenvolvimento deve ser feito de modo iterativo e incremental, para isso será utilizado o Processo Unificado como modelo de ciclo de vida. O ciclo de vida do processo é dividido em 4 fases: Concepção, Elaboração, Construção e Transição, em cada uma dessas fases são desenvolvidos 5 fluxos de trabalho em diferentes graus, sendo eles: Requisitos, Análise, Projeto, Implementação e Teste. Os fluxos de trabalho ocorrem de modo interativo dentro de cada fase, permitindo a análise do que foi produzido e o aperfeiçoamento do projeto de modo contínuo. 
+
+
+Esta seção tem o objetivo de apresentar formalmente o trabalho, seja por meio de linguagem matemática ou de desenhos, fluxogramas, esquemas gráficos, etc. Na segunda parte da seção devem ser discutidos e apresentados quais são as ferramentas utilizadas para solucionar o problema e como elas se relacionam (quando houver mais de uma).
+
+Nesta seção é uma boa tática utilizar-se de figuras para apresentar a proposta de solução do problema.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Resultados}
+
+Esta seção deve apresentar os resultados, logo \textbf{ela só será necessária na versão final do texto}.
+
+\subsection{Figuras e Tabelas}
+
+Todas as figuras e tabelas devem ser citadas no texto principal seguindo o formato: Figura~\ref{fig1}, Tabela~\ref{tab1}, Tabela~\ref{tab2}, etc.
+
+\begin{figure}[H]
+\includegraphics[width=10.5 cm]{Definitions/utfpr-logo.eps}
+\caption{Esta é a legenda de uma figura. É importante que a legenda complemente e até mesmo repita informações contidas na figura para que fique claro a ideia e o objetivo de apresentá-la. Utilize o $\backslash$label\{alias\} para dar nome a figura e referenciá-la posteriormente utilizando $\backslash$ref\{alias\}.\label{fig1}}
+\end{figure}   
+\unskip
+
+\begin{table}[H] 
+\caption{Esta é a legenda de uma tabela. Ela deve ficar acima da tabela ao contrário das figuras que as legendas ficam após.\label{tab1}}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\begin{tabularx}{\textwidth}{CCC}
+\toprule
+\textbf{Title 1}	& \textbf{Title 2}	& \textbf{Title 3}\\
+\midrule
+Entry 1		& Data			& Data\\
+Entry 2		& Data			& Data\\
+\bottomrule
+\end{tabularx}
+\end{table}
+\unskip
+
+\begin{table}[H]
+\caption{Esta é uma tabela mais longa quando há muitas informações a serem colocadas na tabela. Use com parcimônia.\label{tab2}}
+	\begin{adjustwidth}{-\extralength}{0cm}
 		\newcolumntype{C}{>{\centering\arraybackslash}X}
-		\begin{tabularx}{\textwidth}{CCC}
+		\begin{tabularx}{\fulllength}{CCCC}
 			\toprule
-			\textbf{Title 1}	& \textbf{Title 2}	& \textbf{Title 3}\\
+			\textbf{Title 1}	& \textbf{Title 2}	& \textbf{Title 3}     & \textbf{Title 4}\\
 			\midrule
-			Entry 1		& Data			& Data\\
-			Entry 2		& Data			& Data\\
+			Entry 1		& Data			& Data			& Data\\
+			Entry 2		& Data			& Data			& Data\textsuperscript{1}\\
 			\bottomrule
 		\end{tabularx}
-	\end{table}
-	\unskip
-	
-	\begin{table}[H]
-		\caption{Esta é uma tabela mais longa quando há muitas informações a serem colocadas na tabela. Use com parcimônia.\label{tab2}}
-		\begin{adjustwidth}{-\extralength}{0cm}
-			\newcolumntype{C}{>{\centering\arraybackslash}X}
-			\begin{tabularx}{\fulllength}{CCCC}
-				\toprule
-				\textbf{Title 1}	& \textbf{Title 2}	& \textbf{Title 3}     & \textbf{Title 4}\\
-				\midrule
-				Entry 1		& Data			& Data			& Data\\
-				Entry 2		& Data			& Data			& Data\textsuperscript{1}\\
-				\bottomrule
-			\end{tabularx}
-		\end{adjustwidth}
-		\noindent{\footnotesize{\textsuperscript{1} This is a table footnote.}}
-	\end{table}
-	
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\section{Conclusões}
-	
-	Aqui vocês irão apresentar as conclusões as quais chegaram após a finalização do trabalho. Na proposta, esta seção deve apresentar as considerações finais e seu nome deve ser alterado para \textbf{Considerações Finais}.
-	
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\vspace{6pt} 
-	
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\begin{adjustwidth}{-\extralength}{0cm}
-		%\printendnotes[custom] % Un-comment to print a list of endnotes
-		
-		\reftitle{References}
-		
-		% Please provide either the correct journal abbreviation (e.g. according to the “List of Title Word Abbreviations” http://www.issn.org/services/online-services/access-to-the-ltwa/) or the full name of the journal.
-		% Citations and References in Supplementary files are permitted provided that they also appear in the reference list here. 
-		
-		%=====================================
-		% References, variant A: external bibliography
-		%=====================================
-		%\bibliography{your_external_BibTeX_file}
-		
-		%=====================================
-		% References, variant B: internal bibliography
-		%=====================================
-		\begin{thebibliography}{999}
-			% Reference 1
-			\bibitem[Author1(year)]{ref-journal}
-			Author~1, T. The title of the cited article. {\em Journal Abbreviation} {\bf 2008}, {\em 10}, 142--149.
-			% Reference 2
-			\bibitem[Author2(year)]{ref-book1}
-			Author~2, L. The title of the cited contribution. In {\em The Book Title}; Editor1, F., Editor2, A., Eds.; Publishing House: City, Country, 2007; pp. 32--58.
-			% Reference 3
-			\bibitem[Author3(year)]{ref-book2}
-			Author 1, A.; Author 2, B. \textit{Book Title}, 3rd ed.; Publisher: Publisher Location, Country, 2008; pp. 154--196.
-			% Reference 4
-			\bibitem[Author4(year)]{ref-unpublish}
-			Author 1, A.B.; Author 2, C. Title of Unpublished Work. \textit{Abbreviated Journal Name} year, \textit{phrase indicating stage of publication (submitted; accepted; in press)}.
-			% Reference 5
-			\bibitem[Author5(year)]{ref-communication}
-			Author 1, A.B. (University, City, State, Country); Author 2, C. (Institute, City, State, Country). Personal communication, 2012.
-			% Reference 6
-			\bibitem[Author6(year)]{ref-proceeding}
-			Author 1, A.B.; Author 2, C.D.; Author 3, E.F. Title of presentation. In Proceedings of the Name of the Conference, Location of Conference, Country, Date of Conference (Day Month Year); Abstract Number (optional), Pagination (optional).
-			% Reference 7
-			\bibitem[Author7(year)]{ref-thesis}
-			Author 1, A.B. Title of Thesis. Level of Thesis, Degree-Granting University, Location of University, Date of Completion.
-			% Reference 8
-			\bibitem[Author8(year)]{ref-url}
-			Title of Site. Available online: URL (accessed on Day Month Year).
-		\end{thebibliography}
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\end{adjustwidth}
+	\noindent{\footnotesize{\textsuperscript{1} This is a table footnote.}}
+\end{table}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusões}
 
+Aqui vocês irão apresentar as conclusões as quais chegaram após a finalização do trabalho. Na proposta, esta seção deve apresentar as considerações finais e seu nome deve ser alterado para \textbf{Considerações Finais}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{6pt} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{adjustwidth}{-\extralength}{0cm}
+%\printendnotes[custom] % Un-comment to print a list of endnotes
+
+\reftitle{Referencias}
+
+% Please provide either the correct journal abbreviation (e.g. according to the “List of Title Word Abbreviations” http://www.issn.org/services/online-services/access-to-the-ltwa/) or the full name of the journal.
+% Citations and References in Supplementary files are permitted provided that they also appear in the reference list here. 
+
+%=====================================
+% References, variant A: external bibliography
+%=====================================
+%\bibliography{your_external_BibTeX_file}
+
+%=====================================
+% References, variant B: internal bibliography
+%=====================================
+\begin{thebibliography}{999}
+% Reference 1
+\bibitem[Author1(year)]{IEEE TECHNOLOGY AND SOCIETY MAGAZINE}
+Sagiroglu, Seref e Canbek, Gurol. Increansing Threats to Computer Security and Privacy. {\em IEEE TECHNOLOGY AND SOCIETY MAGAZINE} {\bf 2009}, {\em FALL}, 10--17.
+\bibitem[Author1(year)]{Electronic Imaging}
+ Creutzburg, Reiner. The strange world of keyloggers - an overview, Part I. {\em Electronic Imaging} {\bf 2017}, {\em pp}, 139--148.
+\bibitem[Author1(year)]{ IOP Publishing Ltd}
+ Robbi, Rahim. Keylogger Application to Monitoring Users Activity with Exact String Matching Algorithm. {\em  IOP Publishing Ltd} {\bf 2018}.
+\bibitem[Author8(year)]{ref-url}
+Internet World Stats. Available online: https://www.internetworldstats.com/stats.htm (acessado em 10/11/2022).
+\bibitem[Author8(year)]{ref-url}
+How Soviets used IBM Selectric keyloggers to spy on US diplomats. Available online: https://arstechnica.com/information-technology/2015/10/how-soviets-used-ibm-selectric-keyloggers-to-spy-on-us-diplomats/ (acessado em 15/11/2022).
+\end{thebibliography}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{adjustwidth}
 \end{document}
-
